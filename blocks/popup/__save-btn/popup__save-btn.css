@@ -10,3 +10,15 @@
   height: 50px;
   border: none;
 }
+
+.popup__save-btn:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 767px) {
+  .popup__save-btn {
+    height: 46px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

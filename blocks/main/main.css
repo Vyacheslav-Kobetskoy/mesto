@@ -1,2 +1,6 @@
-.main {
+@media (max-width: 900px) {
+  .main {
+    box-sizing: border-box;
+    padding: 0 19px;
+  }
 }

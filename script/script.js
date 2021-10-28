@@ -24,3 +24,10 @@ formElement.addEventListener("submit", (evt) => {
   profileStatus.textContent = popupStatus.value;
   popup.classList.remove("popup_opened");
 });
+
+const like = document.querySelectorAll(".gallery__like");
+for (let i = 0; i < like.length; i++) {
+  like[i].addEventListener("click", (evt) => {
+    evt.target.setAttribute("src", "./images/likeActive.svg");
+  });
+}

@@ -3,3 +3,15 @@
   height: 74px;
   padding-top: 45px;
 }
+
+@media (max-width: 900px) {
+  .header {
+    padding-left: 27px;
+  }
+}
+@media (max-width: 767px) {
+  .header {
+    height: 56px;
+    padding: 28px 0 0 27px;
+  }
+}

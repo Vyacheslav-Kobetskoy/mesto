@@ -1,5 +1,5 @@
 .profile__еdit-btn {
-  background-size:cover;
+  background-size: cover;
   width: 24px;
   height: 24px;
   margin-top: 15px;
@@ -13,5 +13,6 @@
   .profile__еdit-btn {
     width: 18px;
     height: 18px;
+    margin-top: 7px;
   }
 }

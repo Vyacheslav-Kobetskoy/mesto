@@ -1,1 +1,4 @@
-.profile__title{display: flex; flex-direction: row;}
+.profile__title {
+  display: flex;
+  flex-direction: row;
+}
