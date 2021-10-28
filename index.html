@@ -15,68 +15,75 @@
       <div class="header__logo"></div>
     </header>
 
+    <main class="main">
 
-    <main>
-
-      <section class="profile">
+      <section class="profile" aria-label="Профиль">
         <div class="profile__docket">
           <img class="profile__avatar" src="./images/Avatar.jpg" alt="#">
           <div class="profile__info">
             <div class="profile__title">
               <p class="profile__name">Вячеслав Кобецкой</p>
-              <button class="profile__еdit-btn" src="./images/EditButton.svg"></button>
+              <button class="profile__еdit-btn"></button>
             </div>
             <p class="profile__status">Исследователь океана</p>
           </div>
         </div>
         <button class="profile__add-btn"></button>
-
-
-
-
       </section>
 
-      <section class="gallery">
+      <article class="popup" aria-label="Попап">
+        <form class="popup__container">
+          <p class="popup__title">Редактировать профиль</p>
+          <input class="popup__name popup__form" type="text">
+          <input class="popup__status popup__form" type="text">
+          <input type="submit" value="Сохранить" class="popup__save-btn">
+
+          <img class="popup__close-btn" src="./images/CloseIcon.svg" alt="Закрыть">
+        </form>
+
+      </article>
+
+      <section class="gallery" aria-label="Галерея">
         <div class="gallery__card">
-          <img class="gallery__photo" src="./images/Karachaevsk.jpg">
+          <img class="gallery__photo" src="./images/Karachaevsk.jpg" alt="Карачаевск">
           <div class="gallery__caption">
             <p class="gallery__photo-title">Карачаевск</p>
-            <img class="gallery__like" src="./images/like.svg">
+            <img class="gallery__like" src="./images/like.svg" alt="лайк">
           </div>
         </div>
         <div class="gallery__card">
-          <img class="gallery__photo" src="./images/Еlbrus.jpg">
+          <img class="gallery__photo" src="./images/Еlbrus.jpg" alt="Эльбрус">
           <div class="gallery__caption">
             <p class="gallery__photo-title">Гора Эльбрус</p>
-            <img class="gallery__like" src="./images/like.svg">
+            <img class="gallery__like" src="./images/like.svg" alt="лайк">
           </div>
         </div>
         <div class="gallery__card">
-          <img class="gallery__photo" src="./images/Dombai.jpg">
+          <img class="gallery__photo" src="./images/Dombai.jpg" alt="Домбай">
           <div class="gallery__caption">
             <p class="gallery__photo-title">Домбай</p>
-            <img class="gallery__like" src="./images/like.svg">
+            <img class="gallery__like" src="./images/like.svg" alt="лайк">
           </div>
         </div>
         <div class="gallery__card">
-          <img class="gallery__photo" src="./images/Dombai.jpg">
+          <img class="gallery__photo" src="./images/Dombai.jpg" alt="Домбай">
           <div class="gallery__caption">
             <p class="gallery__photo-title">Домбай</p>
-            <img class="gallery__like" src="./images/like.svg">
+            <img class="gallery__like" src="./images/like.svg" alt="лайк">
           </div>
         </div>
         <div class="gallery__card">
-          <img class="gallery__photo" src="./images/Еlbrus.jpg">
+          <img class="gallery__photo" src="./images/Еlbrus.jpg" alt="Эльбрус">
           <div class="gallery__caption">
             <p class="gallery__photo-title">Гора Эльбрус</p>
-            <img class="gallery__like" src="./images/like.svg">
+            <img class="gallery__like" src="./images/like.svg" alt="лайк">
           </div>
         </div>
         <div class="gallery__card">
-          <img class="gallery__photo" src="./images/Karachaevsk.jpg">
+          <img class="gallery__photo" src="./images/Karachaevsk.jpg" alt="Карачаево-Черкесия">
           <div class="gallery__caption">
             <p class="gallery__photo-title">Карачаево-Черкесия</p>
-            <img class="gallery__like" src="./images/like.svg">
+            <img class="gallery__like" src="./images/like.svg" alt="лайк">
           </div>
         </div>
       </section>
@@ -86,6 +93,7 @@
 
     </footer>
   </div>
+  <script src="./script/script.js"></script>
 </body>
 
 </html>
