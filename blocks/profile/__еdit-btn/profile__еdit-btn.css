@@ -1,4 +1,4 @@
-.profile__еdit-btn {
+.profile__edit-btn {
   background-size: cover;
   width: 24px;
   height: 24px;
@@ -10,7 +10,7 @@
 }
 
 @media (max-width: 767px) {
-  .profile__еdit-btn {
+  .profile__edit-btn {
     width: 18px;
     height: 18px;
     margin-top: 7px;
