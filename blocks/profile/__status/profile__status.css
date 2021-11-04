@@ -19,7 +19,7 @@
 
 @media (max-width: 767px) {
   .profile__status {
-    max-width: 252px;
+    max-width: 246px;
     font-size: 14px;
     line-height: 17px;
     text-align: center;
