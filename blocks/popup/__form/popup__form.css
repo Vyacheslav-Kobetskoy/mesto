@@ -1,18 +1,4 @@
 .popup__form {
-  padding-bottom: 13px;
-  outline: none;
-  border: none;
-  border-bottom: 1px solid #000;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 17px;
-  color: #000000;
-  height: 14px;
-}
-
-@media (max-width: 767px) {
-  .popup__form {
-    padding-bottom: 11px;
-  }
+  display: flex;
+  flex-direction: column;
 }

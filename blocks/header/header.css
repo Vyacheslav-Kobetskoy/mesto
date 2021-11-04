@@ -1,6 +1,6 @@
 .header {
-  border-bottom: 1px solid #545454;
-  height: 74px;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+  min-height: 74px;
   padding-top: 45px;
 }
 
@@ -11,7 +11,7 @@
 }
 @media (max-width: 767px) {
   .header {
-    height: 56px;
+    min-height: 56px;
     padding: 28px 0 0 27px;
   }
 }

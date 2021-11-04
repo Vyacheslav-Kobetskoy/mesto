@@ -22,66 +22,56 @@
           <img class="profile__avatar" src="./images/Avatar.jpg" alt="Аватар">
           <div class="profile__info">
             <div class="profile__title">
-              <p class="profile__name">Вячеслав</p>
-              <button class="profile__edit-btn btn-hover"></button>
+              <h1 class="profile__name">Вячеслав</h1>
+              <button class="profile__edit-btn btn-hover" type="button"></button>
             </div>
             <p class="profile__status">Исследователь океана</p>
           </div>
         </div>
-        <button class="profile__add-btn btn-hover"></button>
+        <button class="profile__add-btn btn-hover" type="button"></button>
       </section>
-
-      <article class="popup" aria-label="Попап">
-        <form class="popup__container">
-          <p class="popup__title">Редактировать профиль</p>
-          <input class="popup__name popup__form" type="text">
-          <input class="popup__status popup__form" type="text">
-          <input type="submit" value="Сохранить" class="btn-hover popup__save-btn">
-          <img class="popup__close-btn btn-hover" src="./images/CloseIcon.svg" alt="Закрыть">
-        </form>
-      </article>
 
       <section class="gallery" aria-label="Галерея">
         <div class="gallery__card">
           <img class="gallery__photo" src="./images/Karachaevsk.jpg" alt="Карачаевск">
           <div class="gallery__caption">
-            <p class="gallery__photo-title">Карачаевск</p>
-            <img class="btn-hover btn-hover gallery__like" src="./images/like.svg" alt="лайк">
+            <h2 class="gallery__photo-title">Карачаевск</h2>
+            <button class="btn-hover gallery__like" type="button"></button>
           </div>
         </div>
         <div class="gallery__card">
           <img class="gallery__photo" src="./images/Еlbrus.jpg" alt="Эльбрус">
           <div class="gallery__caption">
-            <p class="gallery__photo-title">Гора Эльбрус</p>
-            <img class="btn-hover gallery__like" src="./images/like.svg" alt="лайк">
+            <h2 class="gallery__photo-title">Гора Эльбрус</h2>
+            <button class="btn-hover gallery__like" type="button"></button>
           </div>
         </div>
         <div class="gallery__card">
           <img class="gallery__photo" src="./images/Dombai.jpg" alt="Домбай">
           <div class="gallery__caption">
-            <p class="gallery__photo-title">Домбай</p>
-            <img class="btn-hover gallery__like" src="./images/like.svg" alt="лайк">
+            <h2 class="gallery__photo-title">Домбай</h2>
+            <button class="btn-hover gallery__like" type="button"></button>
           </div>
         </div>
         <div class="gallery__card">
           <img class="gallery__photo" src="./images/Dombai.jpg" alt="Домбай">
           <div class="gallery__caption">
-            <p class="gallery__photo-title">Домбай</p>
-            <img class="btn-hover gallery__like" src="./images/like.svg" alt="лайк">
+            <h2 class="gallery__photo-title">Домбай</h2>
+            <button class="btn-hover gallery__like" type="button"></button>
           </div>
         </div>
         <div class="gallery__card">
           <img class="gallery__photo" src="./images/Еlbrus.jpg" alt="Эльбрус">
           <div class="gallery__caption">
-            <p class="gallery__photo-title">Гора Эльбрус</p>
-            <img class="btn-hover gallery__like" src="./images/like.svg" alt="лайк">
+            <h2 class="gallery__photo-title">Гора Эльбрус</h2>
+            <button class="btn-hover gallery__like" type="button"></button>
           </div>
         </div>
         <div class="gallery__card">
           <img class="gallery__photo" src="./images/Karachaevsk.jpg" alt="Карачаево-Черкесия">
           <div class="gallery__caption">
-            <p class="gallery__photo-title">Карачаево-Черкесия</p>
-            <img class="btn-hover gallery__like" src="./images/like.svg" alt="лайк">
+            <h2 class="gallery__photo-title">Карачаево-Черкесия</h2>
+            <button class="btn-hover gallery__like" type="button"></button>
           </div>
         </div>
       </section>
@@ -93,6 +83,20 @@
       </p>
     </footer>
   </div>
+
+  <article class="popup" aria-label="Попап">
+    <div class="popup__container">
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class="popup__form" name="editForm">
+        <input class="popup__input-text popup__input-text_type_name" name="editName" type="text">
+        <input class="popup__input-text popup__input-text_type_status" name="editStatus" type="text">
+        <input type="submit" value="Сохранить" class="btn-hover popup__save-btn">
+      </form>
+
+      <button class="popup__close-btn btn-hover" type="button"></button>
+    </div>
+  </article>
+
   <script src="./script/script.js"></script>
 </body>
 

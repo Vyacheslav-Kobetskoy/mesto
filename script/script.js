@@ -4,30 +4,26 @@ const editBtn = document.querySelector(".profile__edit-btn");
 
 const profileName = document.querySelector(".profile__name");
 const profileStatus = document.querySelector(".profile__status");
-const popupName = document.querySelector(".popup__name");
-const popupStatus = document.querySelector(".popup__status");
-const formElement = document.querySelector(".popup__container");
+const popupName = document.querySelector(".popup__input-text_type_name");
+const popupStatus = document.querySelector(".popup__input-text_type_status");
+const formElement = document.querySelector(".popup__form");
 
-editBtn.addEventListener("click", () => {
+function openPopup() {
   popup.classList.add("popup_opened");
   popupName.value = profileName.textContent;
   popupStatus.value = profileStatus.textContent;
-});
+}
+editBtn.addEventListener("click", openPopup);
 
-closeBtn.addEventListener("click", () => {
+function closePopup() {
   popup.classList.remove("popup_opened");
-});
+}
+closeBtn.addEventListener("click", closePopup);
 
-formElement.addEventListener("submit", (evt) => {
+function saveChanges(evt) {
   evt.preventDefault();
   profileName.textContent = popupName.value;
   profileStatus.textContent = popupStatus.value;
-  popup.classList.remove("popup_opened");
-});
-
-const like = document.querySelectorAll(".gallery__like");
-for (let i = 0; i < like.length; i++) {
-  like[i].addEventListener("click", (evt) => {
-    evt.target.setAttribute("src", "./images/likeActive.svg");
-  });
+  closePopup();
 }
+formElement.addEventListener("submit", saveChanges);
