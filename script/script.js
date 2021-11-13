@@ -59,12 +59,25 @@ const gallery = document.querySelector(".gallery");
 const template = document.querySelector(".template");
 
 const createCard = (item) => {
-  const galleryCard = template.content.querySelector(".gallery__card").cloneNode(true);
+  const galleryCard = template.content
+    .querySelector(".gallery__card")
+    .cloneNode(true);
   const galleryPhoto = galleryCard.querySelector(".gallery__photo");
   const galleryPhotoTitle = galleryCard.querySelector(".gallery__photo-title");
   galleryPhoto.src = item.link;
   galleryPhoto.alt = item.name;
   galleryPhotoTitle.textContent = item.name;
+
+  const deleteCardBtn = galleryCard.querySelector(".gallery__delete-btn");
+  deleteCardBtn.addEventListener("click", () => {
+    galleryCard.remove();
+  });
+
+  const like = galleryCard.querySelector(".gallery__like");
+  like.addEventListener("click", () => {
+    like.classList.toggle("gallery__like_active");
+  });
+
   return galleryCard;
 };
 
@@ -73,4 +86,3 @@ const result = initialCards.map((item) => {
 });
 
 gallery.append(...result);
-
