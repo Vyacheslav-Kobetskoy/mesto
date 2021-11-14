@@ -1,4 +1,4 @@
-const popupEdit = document.querySelector(".popup__edit");
+const popupEdit = document.querySelector(".popup_type_edit");
 const closeEditBtn = document.querySelector(".popup__close-edit");
 const editBtn = document.querySelector(".profile__edit-btn");
 
@@ -106,7 +106,7 @@ const result = initialCards.map((item) => {
 gallery.append(...result);
 
 const addBtn = document.querySelector(".profile__add-btn");
-const popupAddImg = document.querySelector(".popup__add-img");
+const popupAddImg = document.querySelector(".popup_type_add-img");
 const closeAddBtn = document.querySelector(".popup__close-add");
 const titleImg = document.querySelector(".popup__input-text_type_title-img");
 const linkImg = document.querySelector(".popup__input-text_type_link-img");
