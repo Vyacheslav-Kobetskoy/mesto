@@ -60,7 +60,8 @@
     <div class="popup__container">
       <h2 class="popup__title">Новое место</h2>
       <form class="popup__form" name="add-imgForm">
-        <input class="popup__input-text popup__input-text_type_title-img" name="editName" type="text" placeholder="Название">
+        <input class="popup__input-text popup__input-text_type_title-img" name="editName" type="text"
+          placeholder="Название">
         <input class="popup__input-text popup__input-text_type_link-img" name="editStatus" type="text"
           placeholder="Ссылка на картинку">
         <input type="submit" value="Создать" class="btn-hover popup__save-btn">
@@ -69,6 +70,13 @@
     </div>
   </article>
 
+  <article class="popup zoom" aria-label="Попап">
+    <div class="zoom__container">
+      <img class="zoom__img" src="" alt="">
+      <h2 class="zoom__title"></h2>
+      <button class="popup__close-btn btn-hover popup__close-zoom" type="button"></button>
+    </div>
+  </article>
 
   <template class="template">
     <div class="gallery__card">
