@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./images/favicon.ico" type="image/png">
   <link rel="stylesheet" href="./pages/index.css">
   <title>Mesto</title>
 </head>
@@ -43,7 +44,7 @@
     </footer>
   </div>
 
-  <article class="popup" aria-label="Попап">
+  <article class="popup popup__edit" aria-label="Попап">
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__form" name="editForm">
@@ -51,8 +52,20 @@
         <input class="popup__input-text popup__input-text_type_status" name="editStatus" type="text">
         <input type="submit" value="Сохранить" class="btn-hover popup__save-btn">
       </form>
+      <button class="popup__close-btn btn-hover popup__close-edit" type="button"></button>
+    </div>
+  </article>
 
-      <button class="popup__close-btn btn-hover" type="button"></button>
+  <article class="popup popup__add-img" aria-label="Попап">
+    <div class="popup__container">
+      <h2 class="popup__title">Новое место</h2>
+      <form class="popup__form" name="add-imgForm">
+        <input class="popup__input-text popup__input-text_type_title-img" name="editName" type="text" placeholder="Название">
+        <input class="popup__input-text popup__input-text_type_link-img" name="editStatus" type="text"
+          placeholder="Ссылка на картинку">
+        <input type="submit" value="Создать" class="btn-hover popup__save-btn">
+      </form>
+      <button class="popup__close-btn btn-hover popup__close-add" type="button"></button>
     </div>
   </article>
 
