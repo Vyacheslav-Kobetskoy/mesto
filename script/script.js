@@ -1,37 +1,3 @@
-const popupEdit = document.querySelector(".popup_type_edit");
-const closeEditBtn = document.querySelector(".popup__close-edit");
-const editBtn = document.querySelector(".profile__edit-btn");
-
-const profileName = document.querySelector(".profile__name");
-const profileStatus = document.querySelector(".profile__status");
-const popupName = document.querySelector(".popup__input-text_type_name");
-const popupStatus = document.querySelector(".popup__input-text_type_status");
-const formEdit = document.getElementsByName("editForm")[0];
-
-function openPopup(popupElement) {
-  popupElement.classList.add("popup_opened");
-}
-
-function closePopup(popupElement) {
-  popupElement.classList.remove("popup_opened");
-}
-
-function saveChanges(evt) {
-  evt.preventDefault();
-  profileName.textContent = popupName.value;
-  profileStatus.textContent = popupStatus.value;
-  closePopup(popupEdit);
-}
-
-editBtn.addEventListener("click", () => {
-  openPopup(popupEdit);
-  popupName.value = profileName.textContent;
-  popupStatus.value = profileStatus.textContent;
-});
-
-closeEditBtn.addEventListener("click", () => closePopup(popupEdit));
-formEdit.addEventListener("submit", saveChanges);
-
 const initialCards = [
   {
     name: "Архыз",
@@ -58,8 +24,51 @@ const initialCards = [
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
   },
 ];
+
+const popupEdit = document.querySelector(".popup_type_edit");
+const closeEditBtn = document.querySelector(".popup__close-edit");
+const editBtn = document.querySelector(".profile__edit-btn");
+
+const profileName = document.querySelector(".profile__name");
+const profileStatus = document.querySelector(".profile__status");
+const popupName = document.querySelector(".popup__input-text_type_name");
+const popupStatus = document.querySelector(".popup__input-text_type_status");
+const formEdit = document.forms["editForm"];
+
+function openPopup(popupElement) {
+  popupElement.classList.add("popup_opened");
+}
+
+function closePopup(popupElement) {
+  popupElement.classList.remove("popup_opened");
+}
+
+function saveChanges(evt) {
+  evt.preventDefault();
+  profileName.textContent = popupName.value;
+  profileStatus.textContent = popupStatus.value;
+  closePopup(popupEdit);
+}
+
+editBtn.addEventListener("click", () => {
+  openPopup(popupEdit);
+  popupName.value = profileName.textContent;
+  popupStatus.value = profileStatus.textContent;
+});
+
+closeEditBtn.addEventListener("click", () => closePopup(popupEdit));
+formEdit.addEventListener("submit", saveChanges);
+
 const gallery = document.querySelector(".gallery");
 const template = document.querySelector(".template");
+
+const popupZoom = document.querySelector(".zoom");
+const closeZoom = document.querySelector(".popup__close-zoom");
+const zoomImg = document.querySelector(".zoom__img");
+const zoomTitle = document.querySelector(".zoom__title");
+
+closeZoom.addEventListener("click", () => closePopup(popupZoom));
+
 
 const createCard = (item) => {
   const galleryCard = template.content.querySelector(".gallery__card").cloneNode(true);
@@ -82,28 +91,21 @@ const createCard = (item) => {
     like.classList.toggle("gallery__like_active");
   });
 
-  const popupZoom = document.querySelector(".zoom");
-  const zoomImg = document.querySelector(".zoom__img");
-  const zoomTitle = document.querySelector(".zoom__title");
-  const closeZoom = document.querySelector(".popup__close-zoom");
-
   galleryPhoto.addEventListener("click", () => {
-    zoomImg.src=galleryPhoto.src
-    zoomImg.alt=galleryPhoto.alt
-    zoomTitle.textContent=item.name
-    openPopup(popupZoom)
+    zoomImg.src = galleryPhoto.src;
+    zoomImg.alt = galleryPhoto.alt;
+    zoomTitle.textContent = item.name;
+    openPopup(popupZoom);
   });
-
-  closeZoom.addEventListener('click',()=>closePopup(popupZoom))
 
   return galleryCard;
 };
 
-const result = initialCards.map((item) => {
+const сardsСollection  = initialCards.map((item) => {
   return createCard(item);
 });
 
-gallery.append(...result);
+gallery.append(...сardsСollection);
 
 const addBtn = document.querySelector(".profile__add-btn");
 const popupAddImg = document.querySelector(".popup_type_add-img");
@@ -114,7 +116,7 @@ addBtn.addEventListener("click", () => openPopup(popupAddImg));
 
 closeAddBtn.addEventListener("click", () => closePopup(popupAddImg));
 
-const formAdd = document.getElementsByName("add-imgForm")[0];
+const formAdd = document.forms["add-imgForm"];
 
 function saveImg(evt) {
   evt.preventDefault();
