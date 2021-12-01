@@ -69,9 +69,10 @@ const zoomTitle = document.querySelector(".zoom__title");
 
 closeZoom.addEventListener("click", () => closePopup(popupZoom));
 
-
 const createCard = (item) => {
-  const galleryCard = template.content.querySelector(".gallery__card").cloneNode(true);
+  const galleryCard = template.content
+    .querySelector(".gallery__card")
+    .cloneNode(true);
   const galleryPhoto = galleryCard.querySelector(".gallery__photo");
   const galleryPhotoTitle = galleryCard.querySelector(".gallery__photo-title");
 
@@ -101,7 +102,7 @@ const createCard = (item) => {
   return galleryCard;
 };
 
-const сardsСollection  = initialCards.map((item) => {
+const сardsСollection = initialCards.map((item) => {
   return createCard(item);
 });
 
@@ -114,17 +115,19 @@ const titleImg = document.querySelector(".popup__input-text_type_title-img");
 const linkImg = document.querySelector(".popup__input-text_type_link-img");
 addBtn.addEventListener("click", () => openPopup(popupAddImg));
 
-closeAddBtn.addEventListener("click", () => closePopup(popupAddImg));
+closeAddBtn.addEventListener("click", () => {
+  closePopup(popupAddImg);
+  titleImg.value = "";
+  linkImg.value = "";
+});
 
 const formAdd = document.forms["add-imgForm"];
 
 function saveImg(evt) {
   evt.preventDefault();
-  if (titleImg.value != "" && linkImg.value.startsWith("https://")) {
-    gallery.prepend(createCard({ name: titleImg.value, link: linkImg.value }));
-    closePopup(popupAddImg);
-    titleImg.value = "";
-    linkImg.value = "";
-  }
+  gallery.prepend(createCard({ name: titleImg.value, link: linkImg.value }));
+  closePopup(popupAddImg);
+  titleImg.value = "";
+  linkImg.value = "";
 }
 formAdd.addEventListener("submit", saveImg);

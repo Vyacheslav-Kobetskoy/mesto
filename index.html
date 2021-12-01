@@ -47,9 +47,11 @@
   <article class="popup popup_type_edit" aria-label="Попап">
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form" name="editForm">
-        <input class="popup__input-text popup__input-text_type_name" name="editName" type="text">
-        <input class="popup__input-text popup__input-text_type_status" name="editStatus" type="text">
+      <form class="popup__form" name="editForm" novalidate>
+        <input id="editName" class="popup__input-text popup__input-text_type_name" name="editName" type="text" minlength="2" maxlength="40" required>
+        <span id="editName-error" class="popup__input-error"></span>
+        <input id="editStatus" class="popup__input-text popup__input-text_type_status" name="editStatus" type="text" minlength="2" maxlength="200" required>
+        <span id="editStatus-error" class="popup__input-error"></span>
         <input type="submit" value="Сохранить" class="btn-hover popup__save-btn">
       </form>
       <button class="popup__close-btn btn-hover popup__close-edit" type="button"></button>
@@ -59,11 +61,13 @@
   <article class="popup popup_type_add-img" aria-label="Попап">
     <div class="popup__container">
       <h2 class="popup__title">Новое место</h2>
-      <form class="popup__form" name="add-imgForm">
-        <input class="popup__input-text popup__input-text_type_title-img" name="editName" type="text"
-          placeholder="Название">
-        <input class="popup__input-text popup__input-text_type_link-img" name="editStatus" type="text"
-          placeholder="Ссылка на картинку">
+      <form class="popup__form" name="add-imgForm" novalidate>
+        <input id="TitleImg" class="popup__input-text popup__input-text_type_title-img" name="TitleImg" type="text"
+          placeholder="Название" minlength="2" maxlength="30" required>
+          <span id="TitleImg-error" class="popup__input-error"></span>
+        <input id="linkImg" class="popup__input-text popup__input-text_type_link-img" name="linkImg" type="url"
+          placeholder="Ссылка на картинку" required>
+          <span id="linkImg-error" class="popup__input-error"></span>
         <input type="submit" value="Создать" class="btn-hover popup__save-btn">
       </form>
       <button class="popup__close-btn btn-hover popup__close-add" type="button"></button>
@@ -92,6 +96,8 @@
 
 
   <script src="./script/script.js"></script>
+  <script src="./script/validate.js"></script>
+
 </body>
 
 </html>

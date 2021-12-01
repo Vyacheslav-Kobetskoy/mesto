@@ -9,6 +9,8 @@
   background-color: #000;
   height: 50px;
   border: none;
+  margin-top: 48px;
+  border-radius: 2px;
 }
 
 .popup__save-btn:hover {
