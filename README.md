@@ -16,6 +16,10 @@
 
 ###### Добавить:Валидацию форм,закрытие попапа кликом на оверлей,нажатием на Esc
 
+##### Спринт №7:
+
+###### Создать классы Card и FormValidator
+
 ##### Ссылки проекта
 
 * [Ссылка на макет в Figma](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1)
