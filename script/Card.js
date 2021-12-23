@@ -1,7 +1,8 @@
 export class Card {
-  constructor(template, cardInfo) {
+  constructor(template, cardInfo, handleCardClick) {
     this._template = template;
     this._cardInfo = cardInfo;
+    this._handleCardClick = handleCardClick;
     this._galleryCard = this._template.content
       .querySelector(".gallery__card")
       .cloneNode(true);
@@ -15,13 +16,22 @@ export class Card {
     );
   }
 
-  _addEventListeners = () => {
-    this._deleteCardBtn.addEventListener("click", () => {
-      this._galleryCard.remove();
-    });
+  _deleteCard = () => {
+    this._galleryCard.remove();
+    this._galleryCard = null;
+  };
 
-    this._like.addEventListener("click", () => {
-      this._like.classList.toggle("gallery__like_active");
+  _toggleLike = () => {
+    this._like.classList.toggle("gallery__like_active");
+  };
+
+  _setEventListeners = () => {
+    this._deleteCardBtn.addEventListener("click", this._deleteCard);
+
+    this._like.addEventListener("click", this._toggleLike);
+
+    this._galleryPhoto.addEventListener("click", () => {
+      this._handleCardClick(this._cardInfo.link, this._cardInfo.name);
     });
   };
 
@@ -29,7 +39,7 @@ export class Card {
     this._galleryPhoto.src = this._cardInfo.link;
     this._galleryPhoto.alt = this._cardInfo.name;
     this._galleryPhotoTitle.textContent = this._cardInfo.name;
-    this._addEventListeners();
+    this._setEventListeners();
     return this._galleryCard;
   };
 }
