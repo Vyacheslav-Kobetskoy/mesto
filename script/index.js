@@ -52,13 +52,12 @@ function createCard(item) {
 }
 
 const сardsСollection = initialCards.map((item) => createCard(item));
+const gallery = document.querySelector(".gallery");
+gallery.append(...сardsСollection);
 
 const popupZoom = document.querySelector(".zoom");
 const zoomImg = document.querySelector(".zoom__img");
 const zoomTitle = document.querySelector(".zoom__title");
-
-const gallery = document.querySelector(".gallery");
-gallery.append(...сardsСollection);
 
 const popupEdit = document.querySelector(".popup_type_edit");
 const editBtn = document.querySelector(".profile__edit-btn");
@@ -81,7 +80,6 @@ function closePopup(popupElement) {
 }
 
 function handleEditProfile(evt) {
-  //evt.preventDefault();
   profileName.textContent = popupName.value;
   profileStatus.textContent = popupStatus.value;
   closePopup(popupEdit);
@@ -131,17 +129,15 @@ function handleCardClick(link, name) {
 }
 
 function saveImg(evt) {
-  //evt.preventDefault();
-
   const newCard = createCard({
     name: titleImg.value,
     link: linkImg.value,
   });
-
   gallery.prepend(newCard);
   closePopup(popupAddImg);
   formAdd.reset();
 }
+
 formAdd.addEventListener("submit", saveImg);
 
 function closePopupEscape(evt) {
