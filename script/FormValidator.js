@@ -1,17 +1,17 @@
 export class FormValidator {
   constructor(form, config) {
     this._config = config;
-    this.form = form;
+    this._form = form;
     this._inputList = Array.from(
-      this.form.querySelectorAll(this._config.inputSelector)
+      this._form.querySelectorAll(this._config.inputSelector)
     );
-    this.buttonElement = this.form.querySelector(
+    this.buttonElement = this._form.querySelector(
       this._config.submitButtonSelector
     );
   }
 
   enableValidation = () => {
-    this.form.addEventListener("submit", (evt) => {
+    this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
     });
 
@@ -35,7 +35,7 @@ export class FormValidator {
   _hideInputError(inputElement) {
     const { inputErrorClass, errorClass } = this._config;
 
-    const errorElement = this.form.querySelector(`#${inputElement.id}-error`);
+    const errorElement = this._form.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.remove(inputErrorClass);
     errorElement.classList.remove(errorClass);
     errorElement.textContent = "";
@@ -43,7 +43,7 @@ export class FormValidator {
 
   _showInputError(inputElement) {
     const { inputErrorClass, errorClass } = this._config;
-    const errorElement = this.form.querySelector(`#${inputElement.id}-error`);
+    const errorElement = this._form.querySelector(`#${inputElement.id}-error`);
 
     inputElement.classList.add(inputErrorClass);
     errorElement.classList.add(errorClass);
@@ -52,7 +52,7 @@ export class FormValidator {
 
   toggleButtonState() {
     const { inactiveButtonClass } = this._config;
-    const isFormValid = this.form.checkValidity();
+    const isFormValid = this._form.checkValidity();
 
     this.buttonElement.classList.toggle(inactiveButtonClass, !isFormValid);
     this.buttonElement.disabled = !isFormValid;
