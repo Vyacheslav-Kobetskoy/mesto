@@ -31,7 +31,7 @@ export class Card {
     this._like.addEventListener("click", this._toggleLike);
 
     this._galleryPhoto.addEventListener("click", () => {
-      this._handleCardClick(this._cardInfo.link, this._cardInfo.name);
+      this._handleCardClick();
     });
   };
 
