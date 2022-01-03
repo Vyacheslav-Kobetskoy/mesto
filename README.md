@@ -22,6 +22,9 @@
 
 ##### Ссылки проекта
 
-* [Ссылка на макет в Figma](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1)
+##### Спринт №8:
+
+###### Создать классы Section, Popup, PopupWithImage, PopupWithForm, UserInfo, настроить сборку Вебпаком
+
 
 * [Ссылка на проект в GitHub Pages](https://vyacheslav-kobetskoy.github.io/mesto/index.html)
