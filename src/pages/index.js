@@ -6,6 +6,8 @@ import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { Section } from "../components/Section.js";
 
+import './index.css'
+
 const template = document.querySelector(".template");
 const gallery = document.querySelector(".gallery");
 const popupZoomSelector = document.querySelector(".zoom");

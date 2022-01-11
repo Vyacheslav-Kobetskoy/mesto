@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="./images/favicon.ico" type="image/png">
-  <link rel="stylesheet" href="./pages/index.css">
+  <link rel="shortcut icon" href="<%=require('./images/favicon.ico')%>" type="image/png">
+  <!--<link rel="stylesheet" href="./pages/index.css">-->
   <title>Mesto</title>
 </head>
 
@@ -20,7 +20,7 @@
 
       <section class="profile" aria-label="Профиль">
         <div class="profile__docket">
-          <img class="profile__avatar" src="./images/Avatar.jpg" alt="Аватар">
+          <img class="profile__avatar" src="<%=require('./images/Avatar.jpg')%>" alt="Аватар">
           <div class="profile__info">
             <div class="profile__title">
               <h1 class="profile__name">Вячеслав</h1>
@@ -103,7 +103,7 @@
 
   </template>
 
-  <script type="module" src="./pages/index.js"></script>
+  <!--<script type="module" src="./pages/index.js"></script>-->
 
 </body>
 
