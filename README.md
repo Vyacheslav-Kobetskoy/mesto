@@ -20,11 +20,10 @@
 
 ###### Создать классы Card и FormValidator
 
-##### Ссылки проекта
-
 ##### Спринт №8:
 
 ###### Создать классы Section, Popup, PopupWithImage, PopupWithForm, UserInfo, настроить сборку Вебпаком
 
+##### Ссылки проекта
 
 * [Ссылка на проект в GitHub Pages](https://vyacheslav-kobetskoy.github.io/mesto/index.html)
