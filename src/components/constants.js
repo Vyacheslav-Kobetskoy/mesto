@@ -33,4 +33,10 @@ const validateConfig = {
   errorClass: "popup__input-error_visible",
 };
 
-export { initialCards, validateConfig };
+const popupSelector = {
+  popupZoomSelector: ".zoom",
+  popupAddImgSelector: ".popup_type_add-img",
+  popupEditSelector: ".popup_type_edit",
+};
+
+export { initialCards, validateConfig, popupSelector };
