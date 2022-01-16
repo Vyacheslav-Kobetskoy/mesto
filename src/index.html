@@ -21,6 +21,7 @@
       <section class="profile" aria-label="Профиль">
         <div class="profile__docket">
           <img class="profile__avatar" src="<%=require('./images/Avatar.jpg')%>" alt="Аватар">
+          <button class="profile__avatar-btn btn-hover"></button>
           <div class="profile__info">
             <div class="profile__title">
               <h1 class="profile__name">Вячеслав</h1>
@@ -67,12 +68,10 @@
     <div class="popup__container">
       <h2 class="popup__title">Новое место</h2>
       <form class="popup__form" name="add-imgForm" novalidate>
-
         <div class="popup__input-container">
           <input id="TitleImg" class="popup__input-text popup__input-text_type_title-img" name="TitleImg" type="text" placeholder="Название" minlength="2" maxlength="30" required>
           <span id="TitleImg-error" class="popup__input-error"></span>
         </div>
-
         <div class="popup__input-container">
           <input id="linkImg" class="popup__input-text popup__input-text_type_link-img" name="linkImg" type="url" placeholder="Ссылка на картинку" required>
           <span id="linkImg-error" class="popup__input-error"></span>
@@ -88,6 +87,30 @@
       <img class="zoom__img" src="#" alt="#">
       <h2 class="zoom__title"></h2>
       <button class="popup__close-btn btn-hover popup__close-zoom" type="button"></button>
+    </div>
+  </article>
+
+  <article class="popup popup_type_edit-avatar" aria-label="Попап">
+    <div class="popup__container">
+      <h2 class="popup__title">Обновить аватар</h2>
+      <form class="popup__form" name="edit-avatarForm" novalidate>
+        <div class="popup__input-container">
+          <input id="linkAvatar" class="popup__input-text popup__input-text_type_link-Avatar" name="linkAvatar" type="url" placeholder="Ссылка на аватар" required>
+          <span id="linkAvatar-error" class="popup__input-error"></span>
+        </div>
+        <input type="submit" value="Сохранить" class="btn-hover popup__save-btn">
+      </form>
+      <button class="popup__close-btn btn-hover popup__close-add" type="button"></button>
+    </div>
+  </article>
+
+  <article class="popup popup_type_delete-card" aria-label="Попап">
+    <div class="popup__container">
+      <h2 class="popup__title popup__title_type_delete-card">Вы уверены?</h2>
+      <form class="popup__form" name="delete-cardForm" novalidate>
+        <input type="submit" value="Да" class="btn-hover popup__save-btn">
+      </form>
+      <button class="popup__close-btn btn-hover popup__close-add" type="button"></button>
     </div>
   </article>
 

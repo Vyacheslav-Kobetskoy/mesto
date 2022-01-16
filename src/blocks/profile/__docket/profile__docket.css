@@ -1,6 +1,7 @@
 .profile__docket {
   display: flex;
   flex-direction: row;
+  position: relative;
 }
 
 @media (max-width: 767px) {

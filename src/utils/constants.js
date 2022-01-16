@@ -37,6 +37,8 @@ const popupSelector = {
   popupZoomSelector: ".zoom",
   popupAddImgSelector: ".popup_type_add-img",
   popupEditSelector: ".popup_type_edit",
+  popupEditAvatarSelector: ".popup_type_edit-avatar",
+  popupDeleteCardSelector: ".popup_type_delete-card",
 };
 
 export { initialCards, validateConfig, popupSelector };

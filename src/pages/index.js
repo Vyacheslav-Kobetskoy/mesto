@@ -10,6 +10,8 @@ import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { Section } from "../components/Section.js";
 import "./index.css";
+import { PopupWithAccept } from "../components/PopupWithAccept.js";
+//import { Popup } from "../components/Popup.js";
 
 const template = document.querySelector(".template");
 const gallery = document.querySelector(".gallery");
@@ -21,9 +23,12 @@ const popupStatus = document.querySelector(".popup__input-text_type_status");
 const formEdit = document.forms["editForm"];
 const addBtn = document.querySelector(".profile__add-btn");
 const formAdd = document.forms["add-imgForm"];
+const profileAvatar = document.querySelector(".profile__avatar");
+const EditAvatarBtn = document.querySelector(".profile__avatar-btn");
+const editAvatarForm = document.forms["edit-avatarForm"];
 
 function renderer(item) {
-  const card = new Card(template, item, handleCardClick);
+  const card = new Card(template, item, handleCardClick, handleDeleteClick);
   return card.createCard();
 }
 
@@ -84,3 +89,44 @@ addBtn.addEventListener("click", () => {
   addFormValidator.resetValidation();
   popupAddImg.open();
 });
+
+const popupEditAvatar = new PopupWithForm(
+  popupSelector.popupEditAvatarSelector,
+  handleEditAvatar
+);
+
+function handleEditAvatar() {
+  profileAvatar.src = popupEditAvatar.getInputValues().linkAvatar;
+  popupEditAvatar.close();
+}
+
+EditAvatarBtn.addEventListener("click", () => {
+  editAvatarFormValidator.resetValidation();
+
+  popupEditAvatar.open();
+});
+
+const editAvatarFormValidator = new FormValidator(
+  editAvatarForm,
+  validateConfig
+);
+editAvatarFormValidator.enableValidation();
+
+const popupDeleteCard = new PopupWithAccept(
+  popupSelector.popupDeleteCardSelector,
+  handleDeleteCard
+);
+
+let targetCard
+
+function handleDeleteCard(evt) {
+  evt.preventDefault();
+  targetCard.remove();
+  popupDeleteCard.close();
+}
+
+function handleDeleteClick() {
+  targetCard=event.target.closest(".gallery__card")
+  popupDeleteCard.open();
+}
+

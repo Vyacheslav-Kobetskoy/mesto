@@ -1,8 +1,9 @@
 export class Card {
-  constructor(template, cardInfo, handleCardClick) {
+  constructor(template, cardInfo, handleCardClick, handleDeleteClick) {
     this._template = template;
     this._cardInfo = cardInfo;
     this._handleCardClick = handleCardClick;
+    this._handleDeleteClick = handleDeleteClick;
     this._galleryCard = this._template.content
       .querySelector(".gallery__card")
       .cloneNode(true);
@@ -26,7 +27,7 @@ export class Card {
   };
 
   _setEventListeners = () => {
-    this._deleteCardBtn.addEventListener("click", this._deleteCard);
+    this._deleteCardBtn.addEventListener("click", this._handleDeleteClick);
 
     this._like.addEventListener("click", this._toggleLike);
 
