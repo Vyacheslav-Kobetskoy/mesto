@@ -15,6 +15,7 @@ export class Card {
     this._createUserId = this._cardInfo.owner._id;
     this._cardId = this._cardInfo._id;
     this._handleLikeCounter = handleLikeCounter;
+    this._likeCount = this._likeCount.bind(this);
     this._countLike = this._cardInfo.likes.length;
     this._galleryCard = this._template.content
       .querySelector(".gallery__card")
@@ -45,17 +46,25 @@ export class Card {
     }
   }
 
-  _toggleLike = () => {
-    if (this._like.classList.contains("gallery__like_active")) {
-      this._handleLikeCounter(this._cardId, true);
+  _likeCount(state) {
+    if (state) {
       this._countLike--;
       this._likeCounter.textContent = this._countLike;
+      this._like.classList.toggle("gallery__like_active");
     } else {
-      this._handleLikeCounter(this._cardId, false);
       this._countLike++;
       this._likeCounter.textContent = this._countLike;
+      this._like.classList.toggle("gallery__like_active");
     }
-    this._like.classList.toggle("gallery__like_active");
+  }
+
+  _toggleLike = () => {
+    if (this._like.classList.contains("gallery__like_active")) {
+      this._handleLikeCounter(this._cardId, this._likeCount, true);
+    } else {
+      this._handleLikeCounter(this._cardId, this._likeCount, false);
+    }
+    //this._like.classList.toggle("gallery__like_active");
   };
 
   _setEventListeners = () => {
@@ -64,7 +73,10 @@ export class Card {
     });
     this._like.addEventListener("click", this._toggleLike);
     this._galleryPhoto.addEventListener("click", () => {
-      this._handleCardClick();
+      this._handleCardClick({
+        name: this._cardInfo.name,
+        link: this._cardInfo.link,
+      });
     });
   };
 

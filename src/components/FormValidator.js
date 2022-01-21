@@ -10,11 +10,10 @@ export class FormValidator {
     );
   }
 
-  enableValidation = () => {
+  _setEventListeners() {
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
     });
-
     this.toggleButtonState();
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
@@ -22,6 +21,10 @@ export class FormValidator {
         this.toggleButtonState();
       });
     });
+  }
+  
+  enableValidation = () => {
+    this._setEventListeners();
   };
 
   _checkInputValidity(inputElement) {
