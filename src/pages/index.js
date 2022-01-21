@@ -1,7 +1,6 @@
 import { Card } from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
 import {
-  initialCards,
   validateConfig,
   popupSelector,
 } from "../utils/constants.js";
@@ -11,7 +10,7 @@ import { UserInfo } from "../components/UserInfo.js";
 import { Section } from "../components/Section.js";
 import "./index.css";
 import { PopupWithAccept } from "../components/PopupWithAccept.js";
-//import { Popup } from "../components/Popup.js";
+import { Api } from "../components/Api.js";
 
 const template = document.querySelector(".template");
 const gallery = document.querySelector(".gallery");
@@ -26,23 +25,67 @@ const formAdd = document.forms["add-imgForm"];
 const profileAvatar = document.querySelector(".profile__avatar");
 const EditAvatarBtn = document.querySelector(".profile__avatar-btn");
 const editAvatarForm = document.forms["edit-avatarForm"];
+const userId = "cfad2ebb79cc596182c2fb2d";
 
 function renderer(item) {
-  const card = new Card(template, item, handleCardClick, handleDeleteClick);
+  const card = new Card(
+    template,
+    item,
+    handleCardClick,
+    handleDeleteClick,
+    userId,
+    handleLikeCounter
+  );
   return card.createCard();
 }
 
-const gallerySection = new Section(initialCards, renderer, gallery);
-gallerySection.renderer();
+const api = new Api({
+  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-34",
+  headers: {
+    authorization: "0b8e8a44-387a-4c30-987b-fa48af305c4f",
+    "Content-Type": "application/json",
+  },
+});
+
+api
+  .getInitialCards()
+  .then((cards) => {
+    const gallerySection = new Section(cards, renderer, gallery);
+    gallerySection.renderer();
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+api
+  .getProfile()
+  .then((profileInfo) => {
+    userInfo.setUserInfo({
+      name: profileInfo.name,
+      status: profileInfo.about,
+    });
+    profileAvatar.src = profileInfo.avatar;
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 function saveImg() {
-  gallerySection.addItem(
-    renderer({
-      name: popupAddImg.getInputValues().TitleImg,
-      link: popupAddImg.getInputValues().linkImg,
+  popupAddImg.isLoad(true);
+  api
+    .postAddCard(
+      popupAddImg.getInputValues().TitleImg,
+      popupAddImg.getInputValues().linkImg
+    )
+    .then((card) => {
+      const newCardySection = new Section({}, renderer, gallery);
+      newCardySection.addItem(renderer(card));
+      popupAddImg.isLoad(false);
+      popupAddImg.close();
     })
-  );
-  popupAddImg.close();
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 const popupWithImage = new PopupWithImage(popupSelector.popupZoomSelector);
@@ -54,11 +97,23 @@ function handleCardClick() {
 const userInfo = new UserInfo(profileName, profileStatus);
 
 function handleEditProfile() {
-  userInfo.setUserInfo({
-    name: popupEdit.getInputValues().editName,
-    status: popupEdit.getInputValues().editStatus,
-  });
-  popupEdit.close();
+  popupEdit.isLoad(true);
+  api
+    .patchEditProfile(
+      popupEdit.getInputValues().editName,
+      popupEdit.getInputValues().editStatus
+    )
+    .then((ProfileInfo) => {
+      userInfo.setUserInfo({
+        name: ProfileInfo.name,
+        status: ProfileInfo.about,
+      });
+      popupEdit.isLoad(false);
+      popupEdit.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 editBtn.addEventListener("click", () => {
@@ -96,13 +151,21 @@ const popupEditAvatar = new PopupWithForm(
 );
 
 function handleEditAvatar() {
-  profileAvatar.src = popupEditAvatar.getInputValues().linkAvatar;
-  popupEditAvatar.close();
+  popupEditAvatar.isLoad(true);
+  api
+    .patchAvatar(popupEditAvatar.getInputValues().linkAvatar)
+    .then((profile) => {
+      profileAvatar.src = profile.avatar;
+      popupEditAvatar.isLoad(false);
+      popupEditAvatar.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 EditAvatarBtn.addEventListener("click", () => {
   editAvatarFormValidator.resetValidation();
-
   popupEditAvatar.open();
 });
 
@@ -112,21 +175,28 @@ const editAvatarFormValidator = new FormValidator(
 );
 editAvatarFormValidator.enableValidation();
 
-const popupDeleteCard = new PopupWithAccept(
-  popupSelector.popupDeleteCardSelector,
-  handleDeleteCard
-);
-
-let targetCard
-
-function handleDeleteCard(evt) {
-  evt.preventDefault();
-  targetCard.remove();
-  popupDeleteCard.close();
-}
-
-function handleDeleteClick() {
-  targetCard=event.target.closest(".gallery__card")
+function handleDeleteClick(cardId, handleDelete) {
+  const popupDeleteCard = new PopupWithAccept(
+    popupSelector.popupDeleteCardSelector,
+    handleDeleteCard
+  );
   popupDeleteCard.open();
+  function handleDeleteCard(evt) {
+    evt.preventDefault();
+    api
+      .deleteCard(cardId)
+      .then(() => handleDelete())
+      .catch((err) => {
+        console.log(err);
+      });
+    popupDeleteCard.close();
+  }
 }
 
+function handleLikeCounter(cardId, state) {
+  if (state) {
+    api.deleteLike(cardId);
+  } else {
+    api.putLike(cardId);
+  }
+}

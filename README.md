@@ -24,6 +24,10 @@
 
 ###### Создать классы Section, Popup, PopupWithImage, PopupWithForm, UserInfo, настроить сборку Вебпаком
 
+##### Спринт №9:
+
+###### Создать класс Api, настроить взаимодействие с сервером
+
 ##### Ссылки проекта
 
 * [Ссылка на проект в GitHub Pages](https://vyacheslav-kobetskoy.github.io/mesto/index.html)

@@ -28,6 +28,8 @@
 @import url(../blocks/gallery/__like/gallery__like.css);
 @import url(../blocks/gallery/__delete-btn/gallery__delete-btn.css);
 @import url(../blocks/gallery/__like/_active/gallery__like_active.css);
+@import url(../blocks/gallery/__like-container/gallery__like-container.css);
+@import url(../blocks/gallery/__like-counter/gallery__like-counter.css);
 
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__title/popup__title.css);
