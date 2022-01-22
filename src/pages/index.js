@@ -35,12 +35,7 @@ const userInfo = new UserInfo(profileName, profileAbout, profileAvatar);
 
 Promise.all([api.getProfile(), api.getInitialCards()])
   .then(([profileInfo, cards]) => {
-    userInfo.setUserInfo({
-      name: profileInfo.name,
-      about: profileInfo.about,
-      avatar: profileInfo.avatar,
-      id: profileInfo._id,
-    });
+    userInfo.setUserInfo(profileInfo);
 
     function renderer(item) {
       const card = new Card(
@@ -102,11 +97,7 @@ function handleEditProfile() {
       popupEdit.getInputValues().editAbout
     )
     .then((profileInfo) => {
-      userInfo.setUserInfo({
-        name: profileInfo.name,
-        about: profileInfo.about,
-        avatar: profileInfo.avatar,
-      });
+      userInfo.setUserInfo(profileInfo);
       popupEdit.close();
     })
     .catch((err) => {
@@ -117,10 +108,10 @@ function handleEditProfile() {
 
 editBtn.addEventListener("click", () => {
   editFormValidator.resetValidation();
-  const user = userInfo.getUserInfo()
+  const user = userInfo.getUserInfo();
   popupName.value = user.name;
   popupAbout.value = user.about;
- // editFormValidator.toggleButtonState();
+  // editFormValidator.toggleButtonState();
   popupEdit.open();
 });
 
@@ -145,7 +136,7 @@ function handleEditAvatar() {
   api
     .patchAvatar(popupEditAvatar.getInputValues().linkAvatar)
     .then((profile) => {
-      profileAvatar.src = profile.avatar;
+      userInfo.setUserInfo(profile);
       popupEditAvatar.close();
     })
     .catch((err) => {
@@ -185,16 +176,16 @@ function handleDeleteClick(cardId, handleDelete) {
   }
 }
 
-function handleLikeCounter(cardId, likeCounter,likeElement, state) {
+function handleLikeCounter(cardId, likeCounter, likeElement, state) {
   if (state) {
     api.deleteLike(cardId).then((card) => {
       likeCounter.textContent = card.likes.length;
-      likeElement.classList.remove("gallery__like_active")
+      likeElement.classList.remove("gallery__like_active");
     });
   } else {
     api.putLike(cardId).then((card) => {
       likeCounter.textContent = card.likes.length;
-      likeElement.classList.add("gallery__like_active")
+      likeElement.classList.add("gallery__like_active");
     });
   }
 }

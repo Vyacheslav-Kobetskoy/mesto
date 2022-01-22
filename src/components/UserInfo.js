@@ -21,6 +21,6 @@ export class UserInfo {
     this._profileName.textContent = userInfo.name;
     this._profileAbout.textContent = userInfo.about;
     this._profileAvatar.src = userInfo.avatar;
-    this._userId = userInfo.id;
+    this._userId = userInfo._id;
   }
 }
