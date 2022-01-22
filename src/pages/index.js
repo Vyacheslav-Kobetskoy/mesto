@@ -35,7 +35,6 @@ const userInfo = new UserInfo(profileName, profileAbout, profileAvatar);
 
 Promise.all([api.getProfile(), api.getInitialCards()])
   .then(([profileInfo, cards]) => {
-
     userInfo.setUserInfo({
       name: profileInfo.name,
       about: profileInfo.about,
@@ -91,8 +90,8 @@ Promise.all([api.getProfile(), api.getInitialCards()])
 
 const popupWithImage = new PopupWithImage(popupSelector.popupZoomSelector);
 
-function handleCardClick({name, link}) {
-  popupWithImage.open({name, link});
+function handleCardClick({ name, link }) {
+  popupWithImage.open({ name, link });
 }
 
 function handleEditProfile() {
@@ -118,9 +117,10 @@ function handleEditProfile() {
 
 editBtn.addEventListener("click", () => {
   editFormValidator.resetValidation();
-  popupName.value = userInfo.getUserInfo().name;
-  popupAbout.value = userInfo.getUserInfo().about;
-  editFormValidator.toggleButtonState();
+  const user = userInfo.getUserInfo()
+  popupName.value = user.name;
+  popupAbout.value = user.about;
+ // editFormValidator.toggleButtonState();
   popupEdit.open();
 });
 
@@ -185,14 +185,16 @@ function handleDeleteClick(cardId, handleDelete) {
   }
 }
 
-function handleLikeCounter(cardId, toggleLike, state) {
+function handleLikeCounter(cardId, likeCounter,likeElement, state) {
   if (state) {
-    api.deleteLike(cardId).then(() => {
-      toggleLike(state);
+    api.deleteLike(cardId).then((card) => {
+      likeCounter.textContent = card.likes.length;
+      likeElement.classList.remove("gallery__like_active")
     });
   } else {
-    api.putLike(cardId).then(() => {
-      toggleLike(state);
+    api.putLike(cardId).then((card) => {
+      likeCounter.textContent = card.likes.length;
+      likeElement.classList.add("gallery__like_active")
     });
   }
 }
